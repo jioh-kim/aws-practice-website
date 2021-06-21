@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory,Response
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -14,3 +14,7 @@ def index():
 @app.route('/aboutus')
 def aboutus():
     return render_template('aboutus.html', title="MLH Fellow", url=os.getenv("URL"))
+
+@app.route('/health', methods=["GET"])
+def health():
+    return Response("Something Here"), 200
